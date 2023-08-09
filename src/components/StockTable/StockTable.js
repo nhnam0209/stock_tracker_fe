@@ -14,7 +14,7 @@ export default class StockTable extends Component {
     });
 
     return (
-      <div className="w-full mx-2 flex justify-center">
+      <div className="w-full mx-2 flex justify-center lg:flex lg:justify-start">
         <div className="col-md-5 mt-5">
           <table>
             <thead className="w-full">
