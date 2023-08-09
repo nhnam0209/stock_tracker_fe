@@ -1,4 +1,4 @@
-import { dataIex, iex } from "../config/iex";
+import { iex } from "../config/iex";
 
 export const stock = {
   latestPrice: (ticker, callback) => {
@@ -8,19 +8,8 @@ export const stock = {
       .then((data) => callback(stock.formatPriceData(data)));
   },
 
-  historyData: (ticker) => {
-    const url = stock.historyDataURL(ticker);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  },
-
   latestPriceURL: (ticker) => {
     return `${iex.base_url}/stock/${ticker}/chart/5y?chartLast=1&token=${iex.api_token}`;
-  },
-
-  historyDataURL: (ticker) => {
-    return `${dataIex.base_url}/historical_prices/${ticker}?range=2m&token=${dataIex.api_token}`;
   },
 
   formatPriceData: (data) => {
@@ -52,6 +41,5 @@ export const stock = {
 
   yesterdaysCloseURL: (ticker, lastTradingDate) => {
     return `${iex.base_url}/stock/${ticker}/chart/date/20230801?chartLast=1&token=${iex.api_token}`;
-    // return `${iex.base_url}/stock/${ticker}/quote/`;
   },
 };
